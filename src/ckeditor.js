@@ -29,7 +29,11 @@ import Table from "@ckeditor/ckeditor5-table/src/table";
 import TableToolbar from "@ckeditor/ckeditor5-table/src/tabletoolbar";
 
 // Custom
+import Underline from "@ckeditor/ckeditor5-basic-styles/src/underline";
+import Strikethrough from "@ckeditor/ckeditor5-basic-styles/src/strikethrough";
 import Font from "@ckeditor/ckeditor5-font/src/font";
+import ImageResize from "@ckeditor/ckeditor5-image/src/imageresize";
+import Alignment from "@ckeditor/ckeditor5-alignment/src/alignment";
 
 export default class ClassicEditor extends ClassicEditorBase {}
 
@@ -56,7 +60,11 @@ ClassicEditor.builtinPlugins = [
   PasteFromOffice,
   Table,
   TableToolbar,
-  Font
+  Underline,
+  Strikethrough,
+  Font,
+  ImageResize,
+  Alignment
 ];
 
 // Editor configuration.
@@ -67,26 +75,41 @@ ClassicEditor.defaultConfig = {
       "|",
       "bold",
       "italic",
+      "underline",
+      "strikethrough",
+      "|",
       "fontSize",
       "fontFamily",
       "fontColor",
       "fontBackgroundColor",
-      "link",
       "|",
+      "alignment",
       "bulletedList",
       "numberedList",
-      "imageUpload",
-      "ckfinder",
       "blockQuote",
       "insertTable",
-      "mediaEmbed",
       "|",
+      "link",
+      "imageUpload",
+      "ckfinder",
+      "mediaEmbed",
       "undo",
       "redo"
     ]
   },
+  alignment: {
+    options: ["left", "right", "center", "justify"]
+  },
   image: {
-    toolbar: ["imageStyle:full", "imageStyle:side", "|", "imageTextAlternative"]
+    toolbar: [
+      "imageStyle:full",
+      "imageStyle:alignLeft",
+      "imageStyle:alignCenter",
+      "imageStyle:alignRight",
+      "|",
+      "imageTextAlternative"
+    ],
+    styles: ["full", "side", "alignLeft", "alignCenter", "alignRight"]
   },
   table: {
     contentToolbar: ["tableColumn", "tableRow", "mergeTableCells"]
@@ -95,7 +118,7 @@ ClassicEditor.defaultConfig = {
     decorators: [
       {
         mode: "manual",
-        label: "Open in a new tab",
+        label: "在新視窗開啟連結",
         attributes: {
           target: "_blank",
           rel: "noopener noreferrer"
