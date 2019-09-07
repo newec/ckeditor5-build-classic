@@ -109,7 +109,8 @@ ClassicEditor.defaultConfig = {
       "|",
       "imageTextAlternative"
     ],
-    styles: ["full", "side", "alignLeft", "alignCenter", "alignRight"]
+    styles: ["full", "side", "alignLeft", "alignCenter", "alignRight"],
+    resizeUnit: "px"
   },
   table: {
     contentToolbar: ["tableColumn", "tableRow", "mergeTableCells"]
